@@ -1,4 +1,5 @@
-require_relative "adopt_a_dog/version"
+require_relative "./adopt_a_dog/version"
+require_relative "./adopt_a_dog/dogs"
 require_relative "./adopt_a_dog/cli"
 
 # module AdoptADog

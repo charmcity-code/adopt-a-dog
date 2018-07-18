@@ -1,6 +1,6 @@
 # CLI Controller
 
-class AdoptADog:: CLI
+class AdoptADog::CLI
 
   def call
     puts "Welcome to Adopt a Dog!"
@@ -13,8 +13,7 @@ class AdoptADog:: CLI
 
   def list_dogs
     #get adoptable dogs
-    puts "Logan"
-    puts "Chase"
+    @dogs = AdoptADog::Dogs.adoptable
   end
 
   def menu
