@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/adopt_a_dog'
+require "bundler/setup"
+require "adopt_a_dog"
 
 AdoptADog::CLI.new.call
