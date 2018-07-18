@@ -14,6 +14,9 @@ class AdoptADog::CLI
   def list_dogs
     #get adoptable dogs
     @dogs = AdoptADog::Dogs.adoptable
+    @dogs.each.with_index(1) do |dog, i|
+      puts "#{i}, #{dog.name}, #{dog.sex}, #{dog.location}"
+    end
   end
 
   def menu
@@ -22,12 +25,11 @@ class AdoptADog::CLI
     while input != "exit"
       puts "Enter the number of the dog you'd like more info on or type list to see list again or type exit:"
       input = gets.chomp.downcase
-      case input
-      when "1"
-        puts "More info on Dog Name 1..."
-      when "2"
-        puts "More info on Dog Name 2..."
-      when "list"
+
+      if input.to_i > 0
+        adoptable_dog = @dogs[input.to_i - 1]
+        puts "#{adoptable_dog.name}, #{adoptable_dog.sex}, #{adoptable_dog.location}"
+      elsif input == "list"
         list_dogs
       else
         puts "Not sure? Type list or exit"

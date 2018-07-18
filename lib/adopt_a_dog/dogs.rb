@@ -2,9 +2,8 @@ class AdoptADog::Dogs
   attr_accessor :name, :sex, :location, :url
 
   def self.adoptable
-    #should return instances of adoptable dogs
-    # puts "Logan Male Senior Baltimore"
-    # puts "Chase Male Adult Parkville"
+    # should return instances of adoptable dogs
+    # Scrape adopt-a-pet.com and return dogs based on that data
     iggys = []
 
     adoptable_ig = self.new
@@ -20,7 +19,7 @@ class AdoptADog::Dogs
     adoptable_ig2.location = "Parkville"
     adoptable_ig2.url = "chase.com"
     iggys << adoptable_ig2
-    
+
     iggys
   end
 end
