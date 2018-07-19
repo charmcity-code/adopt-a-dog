@@ -1,7 +1,7 @@
+require "open-uri"
+require "nokogiri"
+require "pry"
+
 require_relative "./adopt_a_dog/version"
 require_relative "./adopt_a_dog/dogs"
 require_relative "./adopt_a_dog/cli"
-
-# module AdoptADog
-#   # Your code goes here...
-# end

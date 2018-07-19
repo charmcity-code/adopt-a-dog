@@ -4,21 +4,19 @@ class AdoptADog::Dogs
   def self.adoptable
     # should return instances of adoptable dogs
     # Scrape adopt-a-pet.com and return dogs based on that data
+    self.scrape_dogs
+
+  end
+
+  def self.scrape_dogs
+    # go to adopt-a-pet, find the adoptable dogs
+    # extract the properties
+    # instansiate a dog
+
     iggys = []
 
-    adoptable_ig = self.new
-    adoptable_ig.name = "Logan"
-    adoptable_ig.sex = "Male"
-    adoptable_ig.location = "Baltimore"
-    adoptable_ig.url = "logan.com"
-    iggys << adoptable_ig
-
-    adoptable_ig2 = self.new
-    adoptable_ig2.name = "Chase"
-    adoptable_ig2.sex = "Male"
-    adoptable_ig2.location = "Parkville"
-    adoptable_ig2.url = "chase.com"
-    iggys << adoptable_ig2
+    doc = Nokogiri::HTML(open("https://www.adoptapet.com/dog-adoption/search/50/miles/21234?family_id=69"))
+    binding.pry
 
     iggys
   end
