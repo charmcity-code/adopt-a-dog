@@ -1,5 +1,3 @@
-# CLI Controller
-
 class AdoptADog::CLI
 
   def call
@@ -12,10 +10,9 @@ class AdoptADog::CLI
   end
 
   def list_dogs
-    #get adoptable dogs
-    @dogs = AdoptADog::Dogs.adoptable
+    @dogs = AdoptADog::Dogs.scrape_dogs
     @dogs.each.with_index(1) do |dog, i|
-      puts "#{i}, #{dog.name}, #{dog.sex}, #{dog.location}"
+      puts "#{i}. #{dog[:name].upcase}, a #{dog[:sex]} #{dog[:breed]} in #{dog[:location]}"
     end
   end
 
@@ -28,7 +25,7 @@ class AdoptADog::CLI
 
       if input.to_i > 0
         adoptable_dog = @dogs[input.to_i - 1]
-        puts "#{adoptable_dog.name}, #{adoptable_dog.sex}, #{adoptable_dog.location}"
+        puts "#{adoptable_dog.name} - #{adoptable_dog.sex} - #{adoptable_dog.location}"
       elsif input == "list"
         list_dogs
       else
