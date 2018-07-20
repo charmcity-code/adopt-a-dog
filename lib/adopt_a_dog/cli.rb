@@ -5,6 +5,7 @@ class AdoptADog::CLI
     puts "Enter zip code you want to search for dogs"
     # input = gets.chomp
     list_dogs
+    get_about_info
     menu
     goodbye
   end
@@ -16,6 +17,14 @@ class AdoptADog::CLI
     end
   end
 
+  def get_about_info
+    AdoptADog::Dogs.all.each do |dog|
+      about = AdoptADog::Dogs.scrape_profile_page(dog.url)
+      about.add_info(about)
+      puts dog
+    end
+  end
+
   def menu
     input = nil
 
@@ -23,9 +32,9 @@ class AdoptADog::CLI
       puts "Enter the number of the dog you'd like more info on or type list to see list again or type exit:"
       input = gets.chomp.downcase
 
-      if input.to_i > 0
+      if input.to_i == 1
         adoptable_dog = @dogs[input.to_i - 1]
-        puts "#{adoptable_dog.name} - #{adoptable_dog.sex} - #{adoptable_dog.location}"
+        puts "#{adoptable_dog[:name]}"
       elsif input == "list"
         list_dogs
       else
