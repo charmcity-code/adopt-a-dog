@@ -1,7 +1,8 @@
 class AdoptADog::CLI
-  
+  attr_accessor :zip_code
+
   def call
-    puts "Welcome to Adopt a Dog!"
+    puts "Welcome to Adopt an Italian Greyhound!"
     puts "Enter zip code you want to search for dogs"
     # input = gets.chomp
 

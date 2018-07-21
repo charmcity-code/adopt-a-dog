@@ -1,9 +1,12 @@
 class AdoptADog::Scraper
 
-  BASE_URL = "https://www.petsmartcharities.org/find-a-pet-results?city_or_zip=21234&species=dog&color_id&geo_range=50&pet_size_range_id&sex&age=&breed_id=69"
-
   def self.scrape_dogs
-    html = open(BASE_URL)
+    base_url = "https://www.petsmartcharities.org/find-a-pet-results?city_or_zip="
+    zip_code = 21234
+    last_url = "&species=dog&color_id&geo_range=50&pet_size_range_id&sex&age=&breed_id=69"
+    full_url = base_url + zip_code.to_s + last_url
+
+    html = open(full_url)
     doc = Nokogiri::HTML(html)
 
     doc.css(".pet-result").each do |dog|
