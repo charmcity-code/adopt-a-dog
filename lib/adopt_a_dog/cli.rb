@@ -1,49 +1,59 @@
 class AdoptADog::CLI
 
+
   def call
     puts "Welcome to Adopt a Dog!"
     puts "Enter zip code you want to search for dogs"
     # input = gets.chomp
-    list_dogs
-    get_about_info
-    menu
-    goodbye
+
+    AdoptADog::Scraper.scrape_dogs
+    main_menu
+
   end
 
-  def list_dogs
-    @dogs = AdoptADog::Dogs.scrape_dogs
-    @dogs.each.with_index(1) do |dog, i|
-      puts "#{i}. #{dog[:name].upcase}, a #{dog[:sex]} #{dog[:breed]} in #{dog[:location]}"
+  def main_menu
+    puts "Here are some dogs available for adoption:"
+    dogs = AdoptADog::Dogs.all
+
+    dogs.each.with_index(1) do |dog, i|
+        puts "#{i}. #{dog.name.upcase}, a #{dog.sex} #{dog.breed} in #{dog.location}"
     end
+
+    puts "Select dog to view additional info"
+    input = gets.chomp
+    index = input.to_i - 1
+
+    dog = AdoptADog::Dogs.all[index]
+
+    AdoptADog::Scraper.scrape_profile_page(dog)
+
+    puts "Here are the details"
+    puts dog.story
+    puts dog.shelter
+    puts dog.website
+
+    main_menu
   end
 
-  def get_about_info
-    AdoptADog::Dogs.all.each do |dog|
-      about = AdoptADog::Dogs.scrape_profile_page(dog.url)
-      about.add_info(about)
-      puts dog
-    end
-  end
+  # def list_dogs
+  #   @dogs = AdoptADog::Scraper.scrape_dogs("https://www.petsmartcharities.org/find-a-pet-results?city_or_zip=21234&species=dog&color_id&geo_range=50&pet_size_range_id&sex&age=&breed_id=69")
+  #
+  #   @dogs.each.with_index(1) do |dog, i|
+  #     puts "#{i}. #{dog[:name].upcase}, a #{dog[:sex]} #{dog[:breed]} in #{dog[:location]}"
+  #   end
+  #
+  # end
+  #
+  # def add_about_info
+  #   url = @dogs[:url]
+  #   Dogs.all.each do |dog|
+  #     info = AdoptADog::Scraper.scrape_profile_page(url)
+  #     dog.Dogs.add_info(info)
+  #     puts info
+  #   end
+  # end
 
-  def menu
-    input = nil
 
-    while input != "exit"
-      puts "Enter the number of the dog you'd like more info on or type list to see list again or type exit:"
-      input = gets.chomp.downcase
 
-      if input.to_i == 1
-        adoptable_dog = @dogs[input.to_i - 1]
-        puts "#{adoptable_dog[:name]}"
-      elsif input == "list"
-        list_dogs
-      else
-        puts "Not sure? Type list or exit"
-      end
-    end
-  end
 
-  def goodbye
-    puts "Thank you for looking for an adoptable dog."
-  end
 end

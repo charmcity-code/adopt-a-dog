@@ -1,25 +1,32 @@
 class AdoptADog::Dogs
-  attr_accessor :name, :breed, :sex, :location, :url
+  attr_accessor :name, :breed, :sex, :location, :url, :story, :shelter, :website
 
   @@all = []
 
-  def initialize(iggy_hash)
-    @@all << iggy_array.each {|key, value| send(("#{key}="), value)}
-  end
-
-  def self.create_from_array(iggy_array)
-    iggy_array.each do |hash|
-      Dog.new(hash)
-    end
-  end
-
-  def add_info(about_hash)
-    about_hash.each {|key, value| self.send(("#{key}="), value)}
+  def initialize(name, breed, sex, location, url)
+    @name = name
+    @breed = breed
+    @sex = sex
+    @location = location
+    @url = url
+    @@all << self
   end
 
   def self.all
     @@all
   end
+
+
+  # def self.create_from_array(dog_array)
+  #   dog_array.each do |dog|
+  #     Dog.new(hash)
+  #   end
+  # end
+  #
+  # def add_info(about_hash)
+  #   about_hash.each {|key, value| self.send(("#{key}="), value)}
+  # end
+
 
   # private
       # def self.scrape_dogs
@@ -38,24 +45,24 @@ class AdoptADog::Dogs
       #   iggy_array
       # end
 
-    def self.scrape_profile_page(url)
-      # profile: profile.css(".pet-description").text
-      # shelter name: profile.css(".pet-adoption-info").css(".shelter-name").text
-      # website: profile.css(".pet-adoption-info").css(".website").text
-
-      html = open(url)
-      profile = Nokogiri::HTML(html)
-
-      about = {}
-
-      about[:story] = profile.css(".pet-description").text
-      about[:shelter] = profile.css(".pet-adoption-info").css(".shelter-name").text
-      about[:website] = profile.css(".pet-adoption-info").css(".website").text
-
-      about
-
-      # binding.pry
-    end
+    # def self.scrape_profile_page(url)
+    #   # profile: profile.css(".pet-description").text
+    #   # shelter name: profile.css(".pet-adoption-info").css(".shelter-name").text
+    #   # website: profile.css(".pet-adoption-info").css(".website").text
+    #
+    #   html = open(url)
+    #   profile = Nokogiri::HTML(html)
+    #
+    #   about = {}
+    #
+    #   about[:story] = profile.css(".pet-description").text
+    #   about[:shelter] = profile.css(".pet-adoption-info").css(".shelter-name").text
+    #   about[:website] = profile.css(".pet-adoption-info").css(".website").text
+    #
+    #   about
+    #
+    #   # binding.pry
+    # end
 
 
 end
