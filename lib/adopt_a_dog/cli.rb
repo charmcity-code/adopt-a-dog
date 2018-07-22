@@ -25,18 +25,20 @@ class AdoptADog::CLI
   def menu
     input = nil
       while input != "exit"
-        puts "To see a list of adoptable dogs again, type list.\nTo exit type exit."
         input = gets.chomp.downcase
 
         if input.to_i > 0
           index = input.to_i - 1
           dog = AdoptADog::Dogs.all[index]
-          AdoptADog::Scraper.scrape_profile_page(dog)
+          if !dog.story
+            AdoptADog::Scraper.scrape_profile_page(dog)
+          end
 
           puts
           puts dog.story.gsub(/^\s*/, "")
           puts
           puts "To adopt #{dog.name}, please contact #{dog.shelter} at #{dog.website}"
+          puts "\nTo see a list of adoptable dogs again, type list.\nTo exit type exit."
         elsif input == "list"
           list_dogs
         else
