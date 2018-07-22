@@ -3,13 +3,11 @@ class AdoptADog::CLI
 
   def call
     puts "Welcome to Adopt an Italian Greyhound!"
-    puts "Enter zip code you want to search for dogs"
-    # input = gets.chomp
-
     AdoptADog::Scraper.scrape_dogs
     main_menu
 
   end
+
 
   def main_menu
     puts "Here are some dogs available for adoption:"
