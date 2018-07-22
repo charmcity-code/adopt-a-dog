@@ -18,7 +18,7 @@ class AdoptADog::Scraper
   def self.scrape_profile_page(dog)
     doc = Nokogiri::HTML(open("https://www.petsmartcharities.org#{dog.url}"))
 
-    dog.story = doc.css(".pet-description").css("p").text
+    dog.story = doc.css(".pet-description").text
     dog.shelter = doc.css(".pet-adoption-info").css(".shelter-name").text
     dog.website = doc.css(".pet-adoption-info").css(".website").text
   end
