@@ -3,7 +3,9 @@ class AdoptADog::CLI
 
   def call
     puts "Welcome to Adopt an Italian Greyhound!"
-    AdoptADog::Scraper.scrape_dogs
+    puts "Enter zip code"
+    zipcode_input = gets.chomp
+    AdoptADog::Scraper.scrape_dogs(zipcode_input)
     list_dogs
     more_info
   end
@@ -19,6 +21,7 @@ class AdoptADog::CLI
   end
 
   def more_info
+    puts
     puts "To view an individual dog's story, select 1-9"
     input = gets.chomp
     index = input.to_i - 1
