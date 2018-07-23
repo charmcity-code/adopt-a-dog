@@ -1,5 +1,4 @@
 class AdoptADog::CLI
-  attr_accessor :zip_code
 
   def call
     puts "Welcome to Adopt an Italian Greyhound!"
