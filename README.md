@@ -1,28 +1,14 @@
 # AdoptADog
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/adopt_a_dog`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to view Italian Greyhounds available for adoption after user enters a zip code.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'adopt_a_dog'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install adopt_a_dog
 
 ## Usage
 
-TODO: Write usage instructions here
+Run: `adopt-a-dog` after installing the gem.
 
 ## Development
 
