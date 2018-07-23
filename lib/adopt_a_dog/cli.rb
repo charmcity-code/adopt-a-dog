@@ -41,7 +41,7 @@ class AdoptADog::CLI
           puts "\nTo see a list of adoptable dogs again, type list.\nTo exit type exit."
         elsif input == "list"
           list_dogs
-        else
+        elsif input != "exit"
           puts "Try again... Type list or exit."
         end
       end
