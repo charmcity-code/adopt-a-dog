@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Mark Lawrence"]
   spec.email         = ["lawrence.ml@gmail.com"]
 
-  spec.summary       = "Adopt a Dog CLI Gem"
+  spec.summary       = "Find Adoptable Italian Greyhounds"
   spec.homepage      = ""
   spec.license       = "MIT"
 
