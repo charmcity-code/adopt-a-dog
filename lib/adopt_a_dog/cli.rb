@@ -15,6 +15,12 @@ class AdoptADog::CLI
     puts
     dogs = AdoptADog::Dogs.all
 
+    if dogs.empty?
+      puts "Unfortunately there are no adoptable Italian Greyhounds.\nPlease try again with a different zip code."
+      puts
+      call
+    end
+
     dogs.each.with_index(1) do |dog, i|
         puts "#{i}. #{dog.name.upcase}, a #{dog.sex} #{dog.breed} in #{dog.location}"
     end
