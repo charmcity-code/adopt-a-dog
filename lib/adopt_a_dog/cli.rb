@@ -2,25 +2,29 @@ class AdoptADog::CLI
 
   def call
     puts "Welcome to Adopt an Italian Greyhound!"
-    puts "Please enter your zip code"
-    zipcode_input = gets.chomp
-    AdoptADog::Scraper.scrape_dogs(zipcode_input)
+    scrape
     list_dogs
     menu
     goodbye
   end
 
-  def list_dogs
-    puts "These dogs are available for adoption in your area:"
-    puts
+  def scrape
+    puts "Please enter your zip code"
+    zipcode_input = gets.chomp
+    AdoptADog::Scraper.scrape_dogs(zipcode_input)
     dogs = AdoptADog::Dogs.all
 
     if dogs.empty?
       puts "Unfortunately there are no adoptable Italian Greyhounds.\nPlease try again with a different zip code."
       puts
-      call
+      scrape
     end
+  end
 
+  def list_dogs
+    dogs = AdoptADog::Dogs.all
+    puts "These dogs are available for adoption in your area:"
+    puts
     dogs.each.with_index(1) do |dog, i|
         puts "#{i}. #{dog.name.upcase}, a #{dog.sex} #{dog.breed} in #{dog.location}"
     end
