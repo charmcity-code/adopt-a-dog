@@ -1,5 +1,4 @@
 class AdoptADog::Scraper
-
   def self.scrape_dogs(zip_code)
     base_url = "https://www.petsmartcharities.org/find-a-pet-results?city_or_zip="
     zip_code = zip_code
@@ -18,7 +17,6 @@ class AdoptADog::Scraper
 
       AdoptADog::Dogs.new(name, breed, sex, location, url)
     end
-
   end
 
   def self.scrape_profile_page(dog)
@@ -28,5 +26,4 @@ class AdoptADog::Scraper
     dog.shelter = doc.css(".pet-adoption-info").css(".shelter-name").text
     dog.website = doc.css(".pet-adoption-info").css(".website").text
   end
-
 end

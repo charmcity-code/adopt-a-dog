@@ -9,7 +9,7 @@ The user can then type list or exit. If the user types something else they get a
 
 - [x] Pull data from an external source
 
-Adoptable dog data is pulled from https://www.petsmartcharities.org/
+Adoptable dog data is pulled from <https://www.petsmartcharities.org/>
 
 - [x] Implement both list and detail views
 

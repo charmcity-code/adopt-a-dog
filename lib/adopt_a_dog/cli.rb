@@ -1,5 +1,4 @@
 class AdoptADog::CLI
-
   def call
     puts "Welcome to Adopt an Italian Greyhound!"
     scrape
@@ -15,7 +14,7 @@ class AdoptADog::CLI
     dogs = AdoptADog::Dogs.all
 
     if dogs.empty?
-      puts "Unfortunately there are no adoptable Italian Greyhounds.\nPlease try again with a different zip code."
+      puts "Unfortunately there are no adoptable Italian Greyhounds in your area.\nPlease try again with a different zip code."
       puts
       scrape
     end
@@ -59,5 +58,4 @@ class AdoptADog::CLI
   def goodbye
     puts "Thank you for looking at adoptable dogs."
   end
-
 end

@@ -15,5 +15,4 @@ class AdoptADog::Dogs
   def self.all
     @@all
   end
-
 end
