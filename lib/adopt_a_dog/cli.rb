@@ -21,13 +21,13 @@ class AdoptADog::CLI
   end
 
   def list_dogs
-    dogs = AdoptADog::Dogs.all
+    @dogs = AdoptADog::Dogs.all
     puts "These dogs are available for adoption in your area:"
     puts
-    dogs.each.with_index(1) do |dog, i|
-        puts "#{i}. #{dog.name.upcase}, a #{dog.sex} #{dog.breed} in #{dog.location}"
+    @dogs.each.with_index(1) do |dog, i|
+        puts "#{i}. #{dog.name.upcase}, a #{dog.sex} #{dog.breed} in #{dog.location}."
     end
-    puts "\nTo view an individual dog's story, select 1-9."
+    puts "\nTo view an individual dog's story, select 1 - #{@dogs.length}"
   end
 
   def menu
@@ -35,7 +35,7 @@ class AdoptADog::CLI
     while input != "exit"
       input = gets.chomp.downcase
 
-      if input.to_i > 0
+      if input.to_i > 0 && input.to_i <= @dogs.length
         index = input.to_i - 1
         dog = AdoptADog::Dogs.all[index]
         if !dog.story
