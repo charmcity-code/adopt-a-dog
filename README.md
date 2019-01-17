@@ -8,7 +8,7 @@ This Ruby Gem provides a CLI to view Italian Greyhounds available for adoption a
 
 ## Usage
 
-Run: `adopt-a-dog` after installing the gem.
+Run: `bin/adopt-a-dog` after installing the gem.
 
 ## Development
 
