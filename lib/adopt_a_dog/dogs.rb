@@ -1,12 +1,11 @@
 class AdoptADog::Dogs
-  attr_accessor :name, :breed, :sex, :location, :url, :story, :shelter, :website
+  attr_accessor :name, :breed, :location, :url, :story, :shelter, :website
 
   @@all = []
 
-  def initialize(name, breed, sex, location, url)
+  def initialize(name, breed, location, url)
     @name = name
     @breed = breed
-    @sex = sex
     @location = location
     @url = url
     @@all << self
@@ -14,5 +13,9 @@ class AdoptADog::Dogs
 
   def self.all
     @@all
+  end
+
+  def self.limit_nine
+    @@all.slice(0,9)
   end
 end
