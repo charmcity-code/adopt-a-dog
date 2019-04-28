@@ -21,11 +21,11 @@ class AdoptADog::CLI
   end
 
   def list_dogs
-    @dogs = AdoptADog::Dogs.all
+    @dogs = AdoptADog::Dogs.limit_nine
     puts "These dogs are available for adoption in your area:"
     puts
     @dogs.each.with_index(1) do |dog, i|
-        puts "#{i}. #{dog.name.upcase}, a #{dog.sex} #{dog.breed} in #{dog.location}."
+        puts "#{i}. #{dog.name.upcase}, #{dog.breed} in #{dog.location}."
     end
     puts "\nTo view an individual dog's story, select 1 - #{@dogs.length}"
   end
