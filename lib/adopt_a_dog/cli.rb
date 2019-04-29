@@ -45,7 +45,7 @@ class AdoptADog::CLI
         puts
         puts dog.story.gsub(/^\s*/, "")
         puts
-        puts "To adopt #{dog.name}, please contact #{dog.shelter} at #{dog.website}"
+        puts "To adopt #{dog.name} from #{dog.shelter}, please visit #{dog.url}"
         puts "\nTo see a list of adoptable dogs again, type list.\nTo exit type exit."
       elsif input == "list"
         list_dogs
