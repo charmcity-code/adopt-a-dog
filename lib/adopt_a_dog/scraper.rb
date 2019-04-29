@@ -25,6 +25,5 @@ class AdoptADog::Scraper
 
     dog.story = doc.css(".pet-detail-page__info__story").css("p").text
     dog.shelter = doc.css(".pet-detail-page__info__org").css("h3").text
-    dog.website = doc.css(".pet-detail-page__info__org").css(".pet-detail-page__info__org__web").css("a").attribute("href").value
   end
 end
