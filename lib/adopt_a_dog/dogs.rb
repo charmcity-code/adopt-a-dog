@@ -1,5 +1,5 @@
 class AdoptADog::Dogs
-  attr_accessor :name, :breed, :location, :url, :story, :shelter, :website
+  attr_accessor :name, :breed, :location, :url, :story, :shelter
 
   @@all = []
 
